@@ -2,6 +2,7 @@
 
 * [内容简介](README.md)
 * [Linux应用](Linux应用/Linux应用.md)
+    * [CentOS7.2常用命令](Linux应用/Linux常用命令/CentOS7.2常用命令.md)
     * [Linux常用操作](Linux应用/Linux常用操作/Linux常用操作.md)
     * [Linux开发环境搭建](Linux应用/Linux开发环境搭建/Linux开发环境搭建.md)
     * [Linux常用命令](Linux应用/Linux常用命令/Linux常用命令.md)        
@@ -18,6 +19,8 @@
 * [Lua编程](Lua编程/README.md)
 * [Go编程](Go编程/README.md)
 * [PHP编程](PHP编程/语法.md)
+   * [PHP编程语法](PHP编程/语法.md)
+   * [Yii](PHP编程/Yii.md)
 * [Win10应用](Win10应用/Win10应用.md)
 * [数据库操作](数据库操作/SQL操作.md)
    * [MongoDB](数据库操作/MongoDB.md)
