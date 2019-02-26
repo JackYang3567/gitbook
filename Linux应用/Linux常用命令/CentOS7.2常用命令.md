@@ -1,6 +1,6 @@
 # CentOS7.2常用命令
 
-1. 查看已经安装的CentOS版本信息
+## 1、 查看已经安装的CentOS版本信息
 ```
 $ cat /etc/redhat-release
 ```
@@ -27,7 +27,7 @@ uname -r
 3.10.0-327.4.5.el7.x86_64
 
 
-2. 查看系统是32位或者64位的方法
+## 2、 查看系统是32位或者64位的方法
 ```
 $ getconf LONG_BIT
 64
@@ -46,7 +46,7 @@ $ file /bin/ls
 
 显示： ELF 64-bit LSB 即系统为64位
 
-3. 升级CentOS
+## 3、 升级CentOS
 
 ```
 $ yum -y upgrade   #升级所有包和系统版本，不改变内核,软件和系统设置
@@ -54,7 +54,7 @@ $ yum -y upgrade   #升级所有包和系统版本，不改变内核,软件和�
 $ yum -y update    #升级所有包,系统版本和内核，改变软件设置和系统设置
 ```
 
-4. centos关机与重启命令
+## 4、 centos关机与重启命令
    - Linux centos重启命令：
 >```
 　$ reboot
@@ -71,9 +71,26 @@ $ halt             #立刻关机
 $ poweroff         #立刻关机
 $ shutdown -h now  #立刻关机(root用户使用)
 $ shutdown -h 10   #10分钟后自动关机
-> ```
+> ``` 如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消关机
 
-如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消关机
+## 5、 CentOS7查看和关闭防火墙
+- 查看防火墙状态
+  ```
+  $ firewall-cmd --state
+  ```
+  not running
 
+## 6、 Linux如何查看端口
+```
+ # lsof -i:80
+ -bash: lsof: command not found 
+
+ # yum install lsof
+
+ # lsof -i:80
+ COMMAND  PID   USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+ nginx   1840   root    6u  IPv4  17124      0t0  TCP *:http (LISTEN)
+ nginx   1841 nobody    6u  IPv4  17124      0t0  TCP *:http (LISTEN)
+```
 
 

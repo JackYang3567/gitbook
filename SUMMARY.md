@@ -5,6 +5,7 @@
     * [CentOS7.2常用命令](Linux应用/Linux常用命令/CentOS7.2常用命令.md)
     * [Linux常用操作](Linux应用/Linux常用操作/Linux常用操作.md)
     * [Linux开发环境搭建](Linux应用/Linux开发环境搭建/Linux开发环境搭建.md)
+    * [Nginx安装](Linux应用/Linux开发环境搭建/Nginx安装.md)
     * [Linux常用命令](Linux应用/Linux常用命令/Linux常用命令.md)        
 * [Mac应用](Mac应用/Mac应用.md)
     * [Mac常用操作](Mac应用/Mac常用操作/Mac常用操作.md)
