@@ -19,6 +19,8 @@
 * [JavaScript编程](JavaScript编程/README.md)
 * [Lua编程](Lua编程/README.md)
 * [Go编程](Go编程/README.md)
+   * [Go语言](PHP编程/语法.md)
+   * [Go Web开发](Go Web开发/goweb.md)
 * [PHP编程](PHP编程/语法.md)
    * [PHP编程语法](PHP编程/语法.md)
    * [Yii](PHP编程/Yii.md)
