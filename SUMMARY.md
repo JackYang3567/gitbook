@@ -23,7 +23,7 @@
       * [一、GoWeb基础](Go编程/GoWeb开发/一、GoWeb基础基础.md)
       * [二、GoWeb请求](Go编程/GoWeb开发/二、GoWeb请求.md)
       * [三、Go的模板引擎](Go编程/GoWeb开发/三、Go的模板引擎.md)
-      * [四、存储数据及持久化](Go编程/Go Web开发/四、存储数据及持久化.md)
+      * [四、存储数据及持久化](Go编程/GoWeb开发/四、存储数据及持久化.md)
       * [五、GoWeb服务](Go编程/GoWeb开发/五、GoWeb服务.md)
       * [六、GoWeb并发](Go编程/GoWeb开发/六、Goeb并发.md)
       * [七、GoWeb部署](Go编程/GoWeb开发/七、Goeb部署.md)      
