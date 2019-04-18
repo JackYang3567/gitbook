@@ -26,7 +26,7 @@ nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http�
 yum install -y openssl openssl-devel
 ```
 官网下载
-1.直接下载.tar.gz安装包，地址：https://nginx.org/en/download.html
+1.直接下载.tar.gz安装包，地址：[https://nginx.org/en/download.html](https://nginx.org/en/download.html)
 
 2.使用wget命令下载（推荐）。
 ```
@@ -107,7 +107,9 @@ fuser -k 80/tcp
 /usr/local/nginx/sbin/nginx
 ````
 ```
-Job for nginx.service failed because the control process exited with error code. See "systemctl status nginx.service" and "journalctl -xe" for details.
+Job for nginx.service failed because the control process exited with error code.
+
+See "systemctl status nginx.service" and "journalctl -xe" for details.
 ```
 你修改的语句末尾少了分号;
 
