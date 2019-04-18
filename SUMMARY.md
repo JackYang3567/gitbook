@@ -20,13 +20,13 @@
       * [五、Go语言并发模式](Go编程/Go语言/五、Go语言并发模式.md)
       * [六、Go语言标准库](Go编程/Go语言/六、Go语言标准库.md)
    * Go Web开发
-      * [一、GoWeb基础](Go编程/GoWeb开发/一、Go Web基础基础.md)
+      * [一、GoWeb基础](Go编程/GoWeb开发/一、GoWeb基础基础.md)
       * [二、GoWeb请求](Go编程/GoWeb开发/二、GoWeb请求.md)
       * [三、Go的模板引擎](Go编程/GoWeb开发/三、Go的模板引擎.md)
       * [四、存储数据及持久化](Go编程/Go Web开发/四、存储数据及持久化.md)
-      * [五、GoWeb服务](Go编程/GoWeb开发/五、Go Web服务.md)
-      * [六、GoWeb并发](Go编程/GoWeb开发/六、Go eb并发.md)
-      * [七、GoWeb部署](Go编程/GoWeb开发/七、Go eb部署.md)      
+      * [五、GoWeb服务](Go编程/GoWeb开发/五、GoWeb服务.md)
+      * [六、GoWeb并发](Go编程/GoWeb开发/六、Goeb并发.md)
+      * [七、GoWeb部署](Go编程/GoWeb开发/七、Goeb部署.md)      
 * Node.js编程
    * [Egg](Node.js编程/Egg.md)
    * [Koa](Node.js编程/Koa.md)
@@ -34,8 +34,7 @@
    * [Socket.io](Node.js编程/Socket.io.md)
 * JavaScript编程
    * Angular
-      * [一、Angular之TypeScript基础](JavaScript编程/Angular/一、Angular之Type 
-      Script基础.md)
+      * [一、Angular之TypeScript基础](JavaScript编程/Angular/一、Angular之TypeScript基础.md)
       * [二、Angular组件](JavaScript编程/Angular/二、Angular组件.md)
       * [三、Angular内置指令](JavaScript编程/Angular/三、Angular内置指令.md)
       * [四、Angular中的HTTP与表单](JavaScript编程/Angular/四、Angular中的HTTP与表单.md)
