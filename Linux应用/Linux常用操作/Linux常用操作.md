@@ -120,8 +120,8 @@ server
         location ~ ^/api/{
         	
         	rewrite ^/api/(.*)$  /$1  break;
-            proxy_pass  https://djycpgk.362e.cn;
-            proxy_set_header Host djycpgk.362e.cn;
+            proxy_pass  https://xxxx.362e.cn;
+            proxy_set_header Host xxxx.362e.cn;
                     #Proxy Settings
         proxy_redirect     off;
         proxy_set_header   X-Real-IP        $remote_addr;
