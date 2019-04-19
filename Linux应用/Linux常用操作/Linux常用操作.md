@@ -51,10 +51,7 @@ FTP用户名
 ## 三、实例
 众筹后台：
 ```
-http://djycpgk1.362e.cn/djycpgk/login/index.html
-admin
-123456
-123123...
+
 ```
 
 ## 四、站点服务器配置文件
