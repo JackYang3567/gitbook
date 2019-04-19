@@ -46,15 +46,23 @@ $ file /bin/ls
 
 显示： ELF 64-bit LSB 即系统为64位
 
-## 3、 升级CentOS
+## 3、yum clean all
+```
+yum 会把下载的软件包和header存储在cache中，而不会自动删除。
+yum clean指令进行清除yum 会把下载的软件包
+yum clean headers清除header，
+yum clean packages清除下载的rpm包，
+yum clean all一全部清除
+```
 
+## 4、 升级CentOS
 ```
 $ yum -y upgrade   #升级所有包和系统版本，不改变内核,软件和系统设置
 或：
 $ yum -y update    #升级所有包,系统版本和内核，改变软件设置和系统设置
 ```
 
-## 4、 centos关机与重启命令
+## 5、 centos关机与重启命令
    - Linux centos重启命令：
 >```
 　$ reboot
@@ -73,14 +81,14 @@ $ shutdown -h now  #立刻关机(root用户使用)
 $ shutdown -h 10   #10分钟后自动关机
 > ``` 如果是通过shutdown命令设置关机的话，可以用shutdown -c命令取消关机
 
-## 5、 CentOS7查看和关闭防火墙
+## 6、 CentOS7查看和关闭防火墙
 - 查看防火墙状态
   ```
   $ firewall-cmd --state
   ```
   not running
 
-## 6、 Linux如何查看端口
+## 7、 Linux如何查看端口
 ```
  # lsof -i:80
  -bash: lsof: command not found 
