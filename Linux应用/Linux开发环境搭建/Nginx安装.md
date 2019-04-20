@@ -1,50 +1,67 @@
 # Linux开发环境搭建
-##  Nginx安装
+## 1、Nginx环境搭建
+### 1.1、Nginx概述
+ > Nginx 是一个高性能的 Web 和反向代理服务器, 它具有有很多非常优越的特性:
 
-### Nginx安装所需环境
+*  **作为 Web 服务器：**相比 Apache，Nginx 使用更少的资源，支持更多的并发连接，体现更高的效率，这点使 Nginx 尤其受到虚拟主机提供商的欢迎。能够支持高达 50,000 个并发连接数的响应，感谢 Nginx 为我们选择了 epoll and kqueue 作为开发模型.
+
+* **作为负载均衡服务器：**Nginx 既可以在内部直接支持 Rails 和 PHP，也可以支持作为 HTTP代理服务器 对外进行服务。Nginx 用 C 编写, 不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好的多。
+
+* **作为邮件代理服务器:** Nginx 同时也是一个非常优秀的邮件代理服务器（最早开发这个产品的目的之一也是作为邮件代理服务器），Last.fm 描述了成功并且美妙的使用经验。
+
+* **Nginx 安装非常的简单，配置文件 非常简洁（还能够支持perl语法），Bugs非常少的服务器:** Nginx 启动特别容易，并且几乎可以做到7*24不间断运行，即使运行数个月也不需要重新启动。你还能够在 不间断服务的情况下进行软件版本的升级。
+
+### 1.2、 Nginx安装
+
+#### 1.2.1、 Nginx安装所需环境
 Nginx 是 C语言 开发，建议在 Linux 上运行，当然，也可以安装 Windows 版本，本篇则使用 CentOS 7 作为安装环境。
 
-#### 一. gcc 安装
-cd /usr/local
-安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装：
+##### 一. gcc 安装
+
+在终端执行下列命令：
+```
+# cd /usr/local
+```
+安装 nginx 需要先将官网下载的源码进行编译，编译依赖 gcc 环境，如果没有 gcc 环境，则需要安装gcc：
 ```
 yum install gcc-c++
 ```
-#### 二. PCRE pcre-devel 安装
+##### 二. PCRE pcre-devel 安装
 PCRE(Perl Compatible Regular Expressions) 是一个Perl库，包括 perl 兼容的正则表达式库。nginx 的 http 模块使用 pcre 来解析正则表达式，所以需要在 linux 上安装 pcre 库，pcre-devel 是使用 pcre 开发的一个二次开发库。nginx也需要此库。命令：
 ```
 yum install -y pcre pcre-devel
 ```
-#### 三. zlib 安装
+##### 三. zlib 安装
 zlib 库提供了很多种压缩和解压缩的方式， nginx 使用 zlib 对 http 包的内容进行 gzip ，所以需要在 Centos 上安装 zlib 库。
 ```
 yum install -y zlib zlib-devel
 ```
-#### 四. OpenSSL 安装
+##### 四. OpenSSL 安装
 OpenSSL 是一个强大的安全套接字层密码库，囊括主要的密码算法、常用的密钥和证书封装管理功能及 SSL 协议，并提供丰富的应用程序供测试或其它目的使用。
 nginx 不仅支持 http 协议，还支持 https（即在ssl协议上传输http），所以需要在 Centos 安装 OpenSSL 库。
 ```
 yum install -y openssl openssl-devel
 ```
-官网下载
-1.直接下载.tar.gz安装包，地址：[https://nginx.org/en/download.html](https://nginx.org/en/download.html)
+* 官网下载
+  - 1、直接下载.tar.gz安装包，地址：[https://nginx.org/en/download.html](https://nginx.org/en/download.html)
 
-2.使用wget命令下载（推荐）。
+  - 2、使用wget命令下载（推荐）。
 ```
 wget -c https://nginx.org/download/nginx-1.15.8.tar.gz
 ```
-解压
+  - 3、解压
 依然是直接命令：
 ```
 tar -zxvf nginx-1.15.8.tar.gz
 cd nginx-1.15.8
 ```
-配置
+* 配置
 其实在 nginx-1.15.8 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。
-1.使用默认配置
-
+  - 1、使用默认配置
+```
 ./configure
-2.自定义配置（不推荐）
+```
+  - 2、自定义配置（不推荐）
 ```
 ./configure \
 --prefix=/usr/local/nginx \
@@ -63,7 +80,7 @@ cd nginx-1.15.8
 注：将临时文件目录指定为/var/temp/nginx，需要在/var下创建temp及nginx目录
 
 
-编译安装
+  - 3、编译安装
 ```
 make
 make install
@@ -73,7 +90,7 @@ make install
 whereis nginx
 ```
 
-开机自启动
+  - 4、开机自启动
 即在rc.local增加启动代码就可以了。
 ```
 vi /etc/rc.local
@@ -84,30 +101,31 @@ vi /etc/rc.local
 chmod 755 rc.local
 ```
 
-#### 启动nginx时就报错！
-- 启动nginx
+### 1.3、 启动nginx时就报错！
+ 启动nginx
  ```
  /usr/local/nginx/sbin/nginx
  ```
-报错: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+**报错:** nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
 
-解决办法：
+**解决办法：**
+
 ```
 $ sudo fuser -k 80/tcp 
-
 -bash: fuser: command not found #找不到fuser命令
-
 ```
+
 安装：psmisc
+
 ```
 yum install psmisc 
 ```
+
 再运行：
 ```
 fuser -k 80/tcp
 /usr/local/nginx/sbin/nginx
-````
-```
+
 Job for nginx.service failed because the control process exited with error code.
 
 See "systemctl status nginx.service" and "journalctl -xe" for details.
@@ -115,17 +133,20 @@ See "systemctl status nginx.service" and "journalctl -xe" for details.
 你修改的语句末尾少了分号;
 
 
-## Nginx/Tengine服务器安装SSL证书
+### 1.4、 Nginx安装 Nginx/Tengine服务器安装SSL证书
 
 在证书控制台下载Nginx版本证书。下载到本地的压缩文件包解压后包含：
 
-.crt文件：是证书文件，crt是pem文件的扩展名。
-.key文件：证书的私钥文件（申请证书时如果没有选择自动创建CSR，则没有该文件）。
+ **.crt文件：**是证书文件，crt是pem文件的扩展名。  
+
+ **.key文件：** 证书的私钥文件（申请证书时如果没有选择自动创建CSR，则没有该文件）。  
+
 友情提示： .pem扩展名的证书文件采用Base64-encoded的PEM格式文本文件，可根据需要修改扩展名。
 
 以Nginx标准配置为例，假如证书文件名是a.pem，私钥文件是a.key。
 
 在Nginx的安装目录下创建cert目录，并且将下载的全部文件拷贝到cert目录中。如果申请证书时是自己创建的CSR文件，请将对应的私钥文件放到cert目录下并且命名为a.key；
+
 ```
 /usr/local/nginx/cert/a.key
 /usr/local/nginx/cert/a.pem
@@ -279,7 +300,7 @@ http {
 重启 Nginx。
 
 
-## 在启动nginx的可能会报错
+### 1.5、 在启动nginx的可能会报错
 ```
 nginx: [emerg] the "ssl" parameter requires ngx_http_ssl_module in /usr/local/nginx/conf/nginx.conf
 ```

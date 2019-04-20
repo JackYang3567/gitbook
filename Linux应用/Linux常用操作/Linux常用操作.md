@@ -1,10 +1,64 @@
 # Linux常用操作
-## 一、宝塔Linux面板登录信息显示（本地vagrant）
-```
-在终端输入命令：
-#  /etc/init.d/bt default
 
-显示如下信息：
+## 1、Vagrant中的Linux
+
+
+Vagrant是简便虚拟机操作的一个软件
+### 1.1、使用Vagrant虚拟机的好处：
+
+* 1、为了开发环境与生产环境一致（很多开发环境为windows而生产环境为linux），不至于出现在开发环境正常而移步到正式生产环境时出现各种问题，而vagrant通过共享文件，可以实现在主机（windows）下的IDE编写代码操作，直接在虚拟机（linux）中运行展示出效果。
+
+*  2、在vagrant中只需要搭配一次开发环境，然后就可以将搭配好的环境系统镜像打包发送给其他的同事用了，其他同事只需要下载vagrant和virtualBox，然后配置下共享目录后就可以开发了，再也不需要关心配置环境的问题了。
+
+*  3、目前好多扩展如swoole、redis等对linux支持更好，甚至有些只支持linux，所以采用虚拟机，再也不需要为学习新技术找借口了。
+相关环境机软件版本：主机：win10；虚拟机：CentOS 7.2 x86_64；vagrant：2.0.3；virtualBox：5.2.8
+
+### 1.2、安装Vagrant虚拟的步骤如下：
+ - 1、下载virtualBox，地址点这里，安装
+ - 2、下载vagrant，地址点这里，安装
+ - 3、下载镜像，有几个地方可以下载：
+   > http://www.vagrantbox.es,
+   https://atlas.hashicorp.com/boxes/search都可以，
+   这里我随便找了个centos65-x86_64-20140116
+ - 4、将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,再在本地加载,，打开cmd，输入以下命令：
+ 
+ ```
+ vagrant box add {title} {url}
+ vagrant init {title}
+ vagrant up
+
+ ```
+
+### 1.3、进入Vagrant Linux虚拟的步骤如下：
+打开cmd（命令行/终端），输入以下命令：
+
+```
+>vagrant ssh
+Last login: Thu Apr 18 18:00:34 2019 from 10.0.2.2
+[vagrant@localhost ~]$
+
+[vagrant@localhost ~]$ su root
+Password:
+vagrant
+
+[root@localhost vagrant]#
+```
+命令提示符说明：
+  * ">vagrant ssh"中的 “>” 是dos(win10终端)的命令提示符，
+  * “$” 是Unix/类Unix(Linux)中普通用户命令提示符
+  * “#" 是Unix/类Unix(Linux)中系统管理用户命令提示符
+
+### 1.4、使用宝塔Linux面板代替命令行：
+#### 1.4.1、安装宝塔Linux面板
+ - 1、在Linux的终端执行如下命令：
+```
+# yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
+```
+ - 2、宝塔Linux面板登录信息显示（本地vagrant）
+
+```
+上述安装程序执行完成后，
+显示如下信息：（具体内容因人而异）
 Bt-Panel: http://192.168.33.10:8888/e937db4e
 username: fihq9pmi
 password: cf99d8a1
@@ -12,9 +66,21 @@ Warning:
 If you cannot access the panel, 
 release the following port (8888|888|80|443|20|21) in the security group
 
-在浏览器地址栏粘贴：http://192.168.33.10:8888/e937db4e
+```
+如果上述信息没复制下来，在终端输入命令也能找回同样信息
+```
+#  /etc/init.d/bt default
+```
 
+#### 1.4.2、使用宝塔Linux面板 
 
+  - 打开宝塔Linux面板：在浏览器地址栏粘贴：http://192.168.33.10:8888/e937db4e
+  - 登录宝塔Linux面板：
+
+```
+  username: fihq9pmi
+  password: cf99d8a1
+  
 ```
 
 ---
@@ -27,34 +93,40 @@ If you cannot access the panel,
 release the following port (8888|888|80|443|20|21) in the security group
 ==================================================================
 Time consumed: 3 Minute!
+```
 
+#### 1.4.3、一键创建LNMP环境 
+在此操作中，根据目前我们的项目，PHP选择7.0, 其他默认
+
+
+### 1.5、创建站点：
+
+宝塔Linux面板管理常用命令：[https://www.bt.cn/btcode.html](https://www.bt.cn/btcode.html)
 FTP账号资料
 用户：lottery_front_com
 密码：dXexEi3y8Ndha5NN
  
-
-```
 ---
-宝塔Linux面板管理常用命令：[https://www.bt.cn/btcode.html](https://www.bt.cn/btcode.html)
-
-## 二、实战
+##### 需准备的文件说明
+ * cjq.tar.gz 是采集器 上传到服务器的home下，解压，npm i
+ * djycpgk.zip是网站后台管理代码
+ *  front.zip是网站前台代码
+ *  sb28_.sql是mysql数据库备份数据，在bt中导入
+ 
+---
+#### 1.5.1、添加网站
 
 ![添加网站.png](添加网站.png)
 ![成功创建站点.png](成功创建站点.png)
 
+实例: 众筹后台：
 FTP用户名  
    gk_test1_com
 密码  
    n5D5ApwfsHbHjsX7
 
 
-## 三、实例
-众筹后台：
-```
-
-```
-
-## 四、站点服务器配置文件
+#### 1.5.2、 站点服务器配置文件
 
 ```
 server
@@ -146,36 +218,25 @@ server
 1299z.com
 7988z.com
 
----
 
-## 五、Vagrant Linux中应用宝塔Linux面板
 
-### 文件说明
- * cjq.tar.gz 是采集器 上传到服务器的home下，解压，npm i
- * djycpgk.zip是网站后台管理代码
- *  front.zip是网站前台代码
- *  sb28_.sql是mysql数据库备份数据，在bt中导入
- 
----
-
-### vagrangt中使用BTLinux面板部署站点
-
-#### 1、在bt面板安装成功且LNMP安装完成后
-#### 2、在linux 的 /etc/hosts中要做映射
-
+#### 1.5.3、 在linux的做hosts映射
+/etc/hosts
 ```
 192.168.33.10  xxxx.xxxx.com #网站后台 lottery.front.com
 192.168.33.10  xxxx.xxxx.com #网站前台  lottery.manage.com
 ```
+备注：测试域名需要，有正式域名无须此步
 
-#### 3、在宿主机win10中做C:\Windows\System32\drivers\etc\hosts
-
+#### 1.5.4、在宿主机win10中做hosts映射
+C:\Windows\System32\drivers\etc\hosts
 ```
 192.168.33.10  xxxx.xxxx.com #网站后台 lottery.front.com
 192.168.33.10  xxxx.xxxx.com #网站前台 lottery.manage.com
 ```
+备注：测试域名需要，有正式域名无须此步
 
-#### 4、在bt面板中做反向代理
+#### 1.5.5、 在bt面板中做反向代理
   * 步骤一、
 
  
