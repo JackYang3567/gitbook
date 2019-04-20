@@ -247,7 +247,7 @@ C:\Windows\System32\drivers\etc\hosts
  
 ![bt中反向代理设置-2.png](bt中反向代理设置-2.png)
 
-   * 步骤三 、后台站点的伪静态中粘贴如下代码：
+  * 步骤三 、后台站点的伪静态中粘贴如下代码：
 ```
 location / {
 	if (!-e $request_filename){
