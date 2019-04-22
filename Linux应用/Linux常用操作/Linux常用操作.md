@@ -262,7 +262,7 @@ location / {
  location ~ ^/api/{
         	
         	rewrite ^/api/(.*)$  /$1  break;
-            proxy_pass  https:/xxxx.xxxx.com;
+            proxy_pass  http://xxxx.xxxx.com;
             proxy_set_header Host xxxx.xxxx.com;
                     #Proxy Settings
         proxy_redirect     off;

@@ -59,10 +59,11 @@
    * [PHP编程语法](PHP编程/语法.md)
    * [Yii](PHP编程/Yii.md)
 * 数据库操作
-   * [MongoDB](数据库操作/MongoDB.md)
    * [MySql](数据库操作/MySql.md)
    * [Postgresql](数据库操作/Postgresql.md)
    * [SQLServer](数据库操作/SQLServer.md)
+   * [MongoDB](数据库操作/MongoDB.md)
+   * [Redis](数据库操作/Redis.md)
 * Mac应用
     * [Mac常用操作](Mac应用/Mac常用操作/Mac常用操作.md)
     * [Mac开发环境搭建](Mac应用/Mac开发环境搭建/Mac开发环境搭建.md)
