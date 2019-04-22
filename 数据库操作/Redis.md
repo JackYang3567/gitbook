@@ -2,7 +2,7 @@
 ## 1、Redis运行中常见错误
 ### 1.1、MISCONF Redis is configured to save RDB snapshots
  **错误描述：** ReplyError: MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk.   
- **解决方案：**127.0.0.1:6379> config set stop-writes-on-bgsave-error no
+ **解决方案：** 127.0.0.1:6379> config set stop-writes-on-bgsave-error no
 
 ---
 ## 2、 Redis应用场景
@@ -109,7 +109,7 @@ Redis的缓存部分值得写一篇新文章，我这里只是简单的说一下
  - 最好坚持一种模式。例如：”object-type:id:field”就是个不错的注意，像这样”user:1000:password”。
  - Redis模式形成文档，便于查阅
  - Redis模式文档格式如下：  
- 
+
 | Key 名称 | Redis数据类型 | 描述 | 关系 |
 | :--------| :----------- | :--- |:----|
 | 短文本 | 中等文本 | 稍微长一点的文本 | |
