@@ -1,9 +1,7 @@
 # Linux常用操作
 
-<a href="#1">第一段</a>
+## 1、Vagrant中的Linux
 
-## 1、Vagrant中的Linux 
-<a name="1"></a>
 
 Vagrant是简便虚拟机操作的一个软件
 ### 1.1、使用Vagrant虚拟机的好处：
@@ -281,6 +279,3 @@ location / {
         proxy_temp_file_write_size 64k;
         }
 ```
-
----
-<a name="1">第一段</a>

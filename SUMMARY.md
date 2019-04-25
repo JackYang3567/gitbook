@@ -6,6 +6,7 @@
     * [Linux常用操作](Linux应用/Linux常用操作/Linux常用操作.md)
     * Linux开发环境搭建
       - [Nginx安装](Linux应用/Linux开发环境搭建/Nginx安装.md)
+      - [Go环境安装](Linux应用/Linux开发环境搭建/Go环境安装.md)
       - [Postgresql的安装](Linux应用/Linux开发环境搭建/Postgresql的安装.md)
       - [MySQL的安装](Linux应用/Linux开发环境搭建/MySQL的安装.md)
       - [MongoDB的安装](Linux应用/Linux开发环境搭建/MongoDB的安装.md)
