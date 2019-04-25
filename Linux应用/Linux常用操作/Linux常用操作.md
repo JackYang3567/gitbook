@@ -3,7 +3,7 @@
 <a href="#1">第一段</a>
 
 ## 1、Vagrant中的Linux 
-<a name="1"></a>
+
 
 Vagrant是简便虚拟机操作的一个软件
 ### 1.1、使用Vagrant虚拟机的好处：
