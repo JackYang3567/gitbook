@@ -87,11 +87,11 @@ release the following port (8888|888|80|443|20|21) in the security group
 
 ---
 ```
-Bt-Panel: http://192.168.33.10:8888/462c7d08
+Bt-Panel-URL: http://192.168.33.10:8888/462c7d08
 username: jexcrsi4
 password: ce87dc0c
 Warning:
-If you cannot access the panel,
+If you cannot access the panel, 
 release the following port (8888|888|80|443|20|21) in the security group
 ==================================================================
 Time consumed: 3 Minute!
