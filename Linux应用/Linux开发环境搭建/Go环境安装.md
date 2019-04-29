@@ -18,7 +18,7 @@ wget https://studygolang.com/dl/golang/go1.12.4.linux-amd64.tar.gz
 tar -xvf go1.12.4.linux-amd64.tar.gz
 
 创建工作目录 ，这里以vagrant环境为例，非vagrant的linux可创建 /data/goworks/src
-cd /vagrant_data/
+cd /vagrant_data/  # cd /www/wwwroot/
 mkdir goworks/src -p && cd goworks/src
 ```
 
@@ -32,7 +32,7 @@ vim /etc/profile
 
 ```
 export GOROOT=/usr/local/apps/go
-export GOPATH=/vagrant_data/goworks
+export GOPATH=/www/wwwroot/goworks #export GOPATH=/vagrant_data/goworks  
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 ```

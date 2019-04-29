@@ -142,7 +142,7 @@ pq: role "root" does not exist
 su postgres
 
 # 创建root用户
-postgres=#create user root with password 'password';    
+postgres=#create user root with password 'root';    
 CREATE ROLE
 
 # 将数据库权限赋予root用户
