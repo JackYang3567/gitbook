@@ -42,6 +42,7 @@
       * [五、Angular客户端路由](JavaScript编程/Angular/五、Angular客户端路由.md)
       * [六、Redux状态管理](JavaScript编程/Angular/六、Redux状态管理.md)
       * [七、Angular高级组件](JavaScript编程/Angular/七、Angular高级组件.md)
+      * [八、Angular环境错误](JavaScript编程/Angular/八、Angular环境错误.md)
    * React
       * [一、React基础](JavaScript编程/React/一、React基础.md)
       * [二、React组件](JavaScript编程/React/二、React组件.md)
@@ -49,6 +50,7 @@
       * [四、JSX](JavaScript编程/React/四、JSX.md)
       * [五、React客户端路由](JavaScript编程/React/五、React客户端路由.md)
       * [六、Redux状态管理](JavaScript编程/React/六、Redux状态管理.md)
+      * [七、React环境错误](JavaScript编程/React/七、React环境错误.md)
    * Vue
       * [一、Vue基础](JavaScript编程/Vue/一、Vue基础.md)
       * [二、Vue组件](JavaScript编程/Vue/二、Vue组件.md)
@@ -56,6 +58,7 @@
       * [四、Vue中使用render和JSX](JavaScript编程/Vue/四、Vue中使用render和JSX.md)
       * [五、Vue客户端路由](JavaScript编程/Vue/五、Vue客户端路由.md)
       * [六、Vuex状态管理](JavaScript编程/Vue/六、Vuex状态管理.md)
+      * [七、Vue环境错误](JavaScript编程/Vue/七、Vue环境错误.md)
 * PHP编程
    * [PHP编程语法](PHP编程/语法.md)
    * [Yii](PHP编程/Yii.md)
