@@ -92,7 +92,7 @@
     * JavaScript基础  
       - [1、JavaScript数据类型](Web三要素/JavaScript基础/1、JavaScript数据类型.md)
       - [2、JavaScript语法、流程控制](Web三要素/JavaScript基础/2、JavaScript语法、流程控制.md)
-      - [3、函数、数组](Web三要素/JavaScript基础/3、函数、数组.md)
+      - [3、函数、数组、对象](Web三要素/JavaScript基础/3、函数、数组、对象.md)
       - [4、错误处理](Web三要素/JavaScript基础/4、错误处理.md)
       - [5、JavaScript新特性](Web三要素/JavaScript基础/5、JavaScript新特性.md)
       - [6、类](Web三要素/JavaScript基础/6、类.md)
