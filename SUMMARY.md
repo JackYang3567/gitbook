@@ -30,6 +30,7 @@
       * [6、GoWeb并发](Go编程/GoWeb开发/6、GoWeb并发.md)
       * [7、GoWeb部署](Go编程/GoWeb开发/7、GoWeb部署.md)      
 * Node.js编程
+   * [Node.js内置模块](Node.js编程/Node.js内置模块.md)
    * [Egg](Node.js编程/Egg.md)
    * [Koa](Node.js编程/Koa.md)
    * [Express](Node.js编程/Express.md)
@@ -117,7 +118,7 @@
    * [5、grunt](工具应用/5、grunt.md)
    * [6、gulp](工具应用/6、gulp.md)
    * [7、webpack](工具应用/7、webpack.md)
-   * [8、grunt](工具应用/8、grunt.md)
+   * [8、bower](工具应用/8、Bower.md)
    * [9、gulp](工具应用/9、gulp.md)
    * [10、webpack](工具应用/10、webpack.md)
 
