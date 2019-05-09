@@ -1,2 +1,2 @@
 # 前端框架Angular编程
-## 2、Angular组件
+## 8、Angular环境错误
