@@ -100,7 +100,11 @@ vi /etc/rc.local
 ```
 chmod 755 rc.local
 ```
-
+nginx重启
+```
+cd /usr/local/nginx/sbin
+./nginx -s reload
+```
 ### 1.3、 启动nginx时就报错！
  启动nginx
  ```
