@@ -1,5 +1,9 @@
 # Redis应用
 
+https://www.cnblogs.com/W-Yentl/p/7831671.html
+
+extension=php_redis.dll
+
 ## 0、Redis运行中常见错误
 ### 0.1、MISCONF Redis is configured to save RDB snapshots
  **错误描述：** ReplyError: MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk.   

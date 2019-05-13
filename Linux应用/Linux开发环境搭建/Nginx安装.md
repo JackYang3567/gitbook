@@ -340,3 +340,6 @@ cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak
 cp ./objs/nginx /usr/local/nginx/sbin/
 ```
 然后启动nginx，仍可以通过命令查看是否已经加入成功
+
+
+### 1.6、修改nignx报错Nginx [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)
