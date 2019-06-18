@@ -66,6 +66,8 @@
 * PHP编程
    * [PHP编程语法](PHP编程/语法.md)
    * [Yii](PHP编程/Yii.md)
+   * [PHP开启Redis扩展](PHP编程/php开启redis扩展.md)
+   * [php开启MongoDB扩展](PHP编程/php开启MongoDB扩展.md)
 * 数据库操作
    * [MySql](数据库操作/MySql.md)
    * [Postgresql](数据库操作/Postgresql.md)

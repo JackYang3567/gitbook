@@ -1,6 +1,6 @@
 
 # Composer的安装和简单使用
-## 准备工作        
+## 1、准备工作        
 1、在本地安装好WAMP环境，博主使用的是PHPStudy软件；
 
 2、在PHP目录下，打开php.ini文件，开启openssl扩展（去掉extension=php_openssl.dll前面的分号）；
@@ -42,5 +42,18 @@
  ### 3、更换镜像的命令
  下载速度如果慢的话，请更换镜像，更换镜像的命令
  ```
+ composer config -g repo.packagist composer https://packagist.phpcomposer.com
  composer config repo.packagist composer https://packagist.phpcomposer.com
  ```
+
+ ## 2、搭建ThinkPHP5.1
+ ### 2.1、使用Composer安装
+ ```
+  composer create-project topthink/think app-tp5  --prefer-dist
+ ```
+ ### 2.2、使用phpstudy配置站点
+ ### 2.3、访问站点
+ ```
+  http://127.0.0.1:8383/public/
+
+```

@@ -23,5 +23,6 @@ mv composer.phar /usr/local/bin/composer
 
 ```
 cd /www/wwwroot/dev.yiiphp.com/
-composer create-project --prefer-dist yiisoft/yii2-app-basic basic
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+composer create-project --prefer-dist yiisoft/yii2-app-basic app-yii
 ```
