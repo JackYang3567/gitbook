@@ -1,3 +1,25 @@
+# JavaScript和Nodejs
+## JavaScript：
+
+ - ECMAScript(语言基础，如：语法、数据类型结构以及一些内置对象)
+
+ - DOM（一些操作页面元素的方法）
+
+ - BOM（一些操作浏览器的方法）
+## Node.js：
+
+ - ECMAScript(语言基础，如：语法、数据类型结构以及一些内置对象)
+
+ - os(操作系统)
+
+ - file(文件系统)
+
+ - net(网络系统)
+
+ - database(数据库)
+
+--
+
 # Node.js内置模块
 
 ## 1、URL模块

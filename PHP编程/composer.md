@@ -49,11 +49,23 @@
  ## 2、搭建ThinkPHP5.1
  ### 2.1、使用Composer安装
  ```
-  composer create-project topthink/think app-tp5  --prefer-dist
+  composer create-project topthink/think linux-php-tp5 
+  composer create-project topthink/think test-tp5  --prefer-dist
  ```
+ #### 2.1.1、如使用过程中报如下错误 
+ ![composer-1.png](composer-1.png)
+ ```
+ 解决方法：在php.ini文件中打开php_openssl扩展 
+ extension=php_openssl.dll
+```
  ### 2.2、使用phpstudy配置站点
  ### 2.3、访问站点
  ```
   http://127.0.0.1:8383/public/
 
 ```
+
+## 3、win10 apache2.4 php7.2 php7.3 开启openssl扩展
+[官方下载](https://windows.php.net/downloads/php-sdk/deps/vc14/x64/)
+[openssl-1.1.1c-vc14-x64.zip](https://windows.php.net/downloads/php-sdk/deps/vc14/x64/openssl-1.0.2r-vc14-x64.zip)
+解压后bin目录能看到libcrypto-1_1-x64.dll和libssl-1_1-x64.dll，拷到php和apache的bin下

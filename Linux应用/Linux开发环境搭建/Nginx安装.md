@@ -47,16 +47,16 @@ yum install -y openssl openssl-devel
 
   - 2、使用wget命令下载（推荐）。
 ```
-wget -c https://nginx.org/download/nginx-1.15.8.tar.gz
+wget -c https://nginx.org/download/nginx-1.17.0.tar.gz
 ```
   - 3、解压
 依然是直接命令：
 ```
-tar -zxvf nginx-1.15.8.tar.gz
-cd nginx-1.15.8
+tar -zxvf nginx-1.17.0.tar.gz
+cd nginx-1.17.0
 ```
 * 配置
-其实在 nginx-1.15.8 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。
+其实在 nginx-1.17.0 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。
   - 1、使用默认配置
 ```
 ./configure
@@ -104,6 +104,31 @@ nginx重启
 ```
 cd /usr/local/nginx/sbin
 ./nginx -s reload
+```
+- 查看nginx版本号
+```
+/usr/local/nginx/sbin/nginx -V
+```
+- 查看一下端口进程
+```
+# netstat -ntpl
+```
+```
+关闭
+
+　　查询nginx主进程号
+
+　　ps -ef | grep nginx
+
+　　从容停止   kill -QUIT 主进程号
+
+　　快速停止   kill -TERM 主进程号
+
+　　强制停止   kill -9 nginx
+
+　　若nginx.conf配置了pid文件路径，如果没有，则在logs目录下
+
+　　kill -信号类型 '/usr/local/nginx/logs/nginx.pid'
 ```
 ### 1.3、 启动nginx时就报错！
  启动nginx
@@ -343,3 +368,126 @@ cp ./objs/nginx /usr/local/nginx/sbin/
 
 
 ### 1.6、修改nignx报错Nginx [emerg]: bind() to 0.0.0.0:80 failed (98: Address already in use)
+
+
+
+## 2、CentOS7下thinkphp5的Nginx虚拟主机配置
+
+### 2.1、修改nginx配置文件
+```
+vi /usr/local/nginx/conf/nginx.conf
+## 使其包含符号链接虚拟主机文件，在 http {} 区块结束前加上如下内容：
+include /usr/local/nginx/conf/vhost/*.conf;
+
+vi /usr/local/nginx/conf/vhost/linux.phptp5.com.conf 
+加上如下内容：
+
+server
+    {
+        listen 8021;
+        server_name linux.phptp5.com;
+        index index.php;
+        #根目录设置到Public下
+        root  /vagrant_data/phpworks/linux.phptp5.com/public;
+
+        #定义变量
+        set $root /vagrant_data/phpworks/linux.phptp5.com/public;
+
+        location ~ [^/]\.php(/|$)
+        {
+            try_files $uri =404;
+            fastcgi_pass  unix:/tmp/php-cgi.sock;
+            fastcgi_index index.php;
+            #设置PATH_INFO
+            fastcgi_split_path_info ^((?U).+.php)(/?.+)$;
+            fastcgi_param PATH_INFO $fastcgi_path_info;
+            fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+            fastcgi_param SCRIPT_FILENAME $root$fastcgi_script_name;
+            #引入fastcgi配置
+            include fastcgi.conf;
+        }
+
+        #从URL中去掉index.php入口文件
+        location /
+        {
+            if (!-e $request_filename) {
+                rewrite  ^(.*)$  /index.php?s=/$1  last;
+                break;
+            }
+        }
+
+        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$
+        {
+            expires      30d;
+        }
+
+        location ~ .*\.(js|css)?$
+        {
+            expires      12h;
+        }
+
+        location ~ /.well-known {
+            allow all;
+        }
+
+        location ~ /\.
+        {
+            deny all;
+        }
+
+        access_log off;
+    }
+
+
+```
+
+>fastcgi.conf配置：
+
+```
+
+fastcgi_param  SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+fastcgi_param  QUERY_STRING       $query_string;
+fastcgi_param  REQUEST_METHOD     $request_method;
+fastcgi_param  CONTENT_TYPE       $content_type;
+fastcgi_param  CONTENT_LENGTH     $content_length;
+
+fastcgi_param  SCRIPT_NAME        $fastcgi_script_name;
+fastcgi_param  REQUEST_URI        $request_uri;
+fastcgi_param  DOCUMENT_URI       $document_uri;
+fastcgi_param  DOCUMENT_ROOT      $document_root;
+fastcgi_param  SERVER_PROTOCOL    $server_protocol;
+fastcgi_param  REQUEST_SCHEME     $scheme;
+fastcgi_param  HTTPS              $https if_not_empty;
+
+fastcgi_param  GATEWAY_INTERFACE  CGI/1.1;
+fastcgi_param  SERVER_SOFTWARE    nginx/$nginx_version;
+
+fastcgi_param  REMOTE_ADDR        $remote_addr;
+fastcgi_param  REMOTE_PORT        $remote_port;
+fastcgi_param  SERVER_ADDR        $server_addr;
+fastcgi_param  SERVER_PORT        $server_port;
+fastcgi_param  SERVER_NAME        $server_name;
+
+# PHP only, required if PHP was built with --enable-force-cgi-redirect
+fastcgi_param  REDIRECT_STATUS    200;
+
+#fastcgi_param PHP_ADMIN_VALUE "open_basedir=$document_root/:/tmp/:/proc/";
+#fastcgi_param PHP_ADMIN_VALUE $basedir if_not_empty;
+
+fastcgi_param PHP_ADMIN_VALUE "open_basedir=/vagrant_data/phpworks/linux.phptp5.com/:/tmp/:/proc/";
+```
+
+php.ini打开cgi.fix_pathinfo方便nginx解析路径
+cgi.fix_pathinfo = 1
+配置好之后重启Nginx和PHP-FPM
+
+service nginx restart
+
+service php-fpm restart 或
+systemctl restart php-fpm.service
+
+
+
+重启成功后你就可以这样访问：
+
+domain/module/controller/action

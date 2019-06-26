@@ -36,6 +36,7 @@
    * [Express](Node.js编程/Express.md)
    * [Socket.io](Node.js编程/Socket.io.md)
 * JavaScript编程
+   * [JWT](JavaScript编程/JWT.md)
    * Angular
       * [1、Angular之TypeScript基础](JavaScript编程/Angular/1、Angular之TypeScript基础.md)
       * [2、Angular组件](JavaScript编程/Angular/2、Angular组件.md)
@@ -64,6 +65,7 @@
       * [7、Vuex状态管理](JavaScript编程/Vue/7、Vuex状态管理.md)
       * [8、Vue环境错误](JavaScript编程/Vue/8、Vue环境错误.md)
 * PHP编程
+   * [composer的使用](PHP编程/composer.md)
    * [PHP编程语法](PHP编程/语法.md)
    * [Yii](PHP编程/Yii.md)
    * [PHP开启Redis扩展](PHP编程/php开启redis扩展.md)
