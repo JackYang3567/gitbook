@@ -1,4 +1,12 @@
 # 数据库操作
+## 查看mysql数据库的引擎
+```
+show engines;
+```
+看你的mysql当前默认的存储引擎:
+```
+mysql> show variables like '%storage_engine%';
+```
 ## 1、mysql 时间相关sql , 按天、月、季度、年等条件进行查询
 
 ### 1.1、 mysql按天查询

@@ -350,3 +350,25 @@ git clone https://github.com/XXXXX/golangpro-test.git
 
 ```
 
+
+
+### 3、Git建立本地仓库并上传到Gitee
+
+在本地项目目录中操作
+```
+echo "# golangpro-test" >> README.md
+git init  
+git add README.md
+git commit -m "first commit"
+git remote add origin https://gitee.com/XXXXX/golangpro-test.git
+git push -u origin master
+
+```
+如果报错：
+![gitee-1.png](gitee-1.png)
+
+执行命令：
+```
+git pull origin master --allow-unrelated-histories
+git push -u origin master
+```
