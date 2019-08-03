@@ -371,4 +371,16 @@ git push -u origin master
 ```
 git pull origin master --allow-unrelated-histories
 git push -u origin master
+
+git pull
+git push
+```
+命令查看你的历史变更记录
+```
+git reflog
+
+```
+回退到指定的版本（引用位置）
+```
+git reset --hard HEAD@{n}
 ```
