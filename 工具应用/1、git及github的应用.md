@@ -375,8 +375,13 @@ git push -u origin master
 git pull
 git push
 ```
+命令用于显示工作目录和暂存区的状态
+```
+git status
+```
 命令查看你的历史变更记录
 ```
+
 git reflog
 
 ```
