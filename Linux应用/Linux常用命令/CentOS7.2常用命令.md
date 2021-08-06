@@ -449,14 +449,14 @@ $ yum clean all        #全部清除所有缓存的包和头文件
 
 
 
-## 5、 CentOS7查看和关闭防火墙
+## 13、 CentOS7查看和关闭防火墙
 - 查看防火墙状态
   ```
   $ firewall-cmd --state
   ```
   not running
 
-## 6、 Linux如何查看端口
+## 14、 Linux如何查看端口
 ```
  # lsof -i:80
  -bash: lsof: command not found 
