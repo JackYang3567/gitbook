@@ -135,3 +135,8 @@
    * [2、json](数据描述语言/2、json.md)
    * [3、xml](数据描述语言/3、xml.md)
 
+* Vagrant环境搭建
+   * [1、安装步骤](Vagrant环境搭建/1、安装步骤.md)
+   * [2、vagrant常用命令](Vagrant环境搭建/2、vagrant常用命令.md)
+   * [3、vagrant管理虚拟机之虚拟机扩展磁盘、根目录](Vagrant环境搭建/3、vagrant管理虚拟机之虚拟机扩展磁盘、根目录.md)
+
