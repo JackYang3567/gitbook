@@ -16,57 +16,144 @@ Vagrant是简便虚拟机操作的一个软件
 相关环境机软件版本：主机：win10；虚拟机：CentOS 7.2 x86_64；vagrant：2.0.3；virtualBox：5.2.8
 
 ### 1.2、安装Vagrant虚拟的步骤如下：
- - 1、下载virtualBox，地址点这里，安装
- - 2、下载vagrant，地址点这里，安装
+ - 1、[下载virtualBox](https://www.virtualbox.org/)，安装
+ - 2、[下载vagrant](https://www.vagrantup.com/downloads.html)，安装
  - 3、下载镜像，有几个地方可以下载：
-   > http://www.vagrantbox.es,
-   https://atlas.hashicorp.com/boxes/search都可以，
+   > [http://www.vagrantbox.es](http://www.vagrantbox.es/),
+   [https://atlas.hashicorp.com/boxes/search](https://atlas.hashicorp.com/boxes/search)都可以，
    这里我随便找了个centos65-x86_64-20140116
- - 4、将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,再在本地加载,，打开cmd，输入以下命令：
+ - 4、将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,
+ 这里用的是磁盘扩展到100G的容量的BOX。再在本地加载,打开cmd，输入以下命令：
  
  ```
- vagrant box add {title} {url}
- vagrant init {title}
- vagrant up
+ C:\Users\86138>d:
+ D:\>mkdir vmhost
+ D:\>cd vmhost
+ D:\vmhost>vagrant box add {title} {url}
+ D:\vmhost>vagrant init {title}
+ D:\vmhost>vagrant up
 
+ ```
+ 正常启动会出现下列信息
+ ```
+ Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+==> default: Forwarding ports...
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default: Warning: Connection aborted. Retrying...
+    default: Warning: Connection reset. Retrying...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+    default: The guest additions on this VM do not match the installed version of
+    default: VirtualBox! In most cases this is fine, but in rare cases it can
+    default: prevent things such as shared folders from working properly. If you see
+    default: shared folder errors, please make sure the guest additions within the
+    default: virtual machine match the version of VirtualBox you have installed on
+    default: your host and reload your VM.
+    default:
+    default: Guest Additions Version: 4.3.30
+    default: VirtualBox Version: 6.1
+==> default: Mounting shared folders...
+    default: /vagrant => D:/vmhost
+==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> default: flag to force provisioning. Provisioners marked to run always will still run.
  ```
 
 ### 1.3、进入Vagrant Linux虚拟的步骤如下：
 打开cmd（命令行/终端），输入以下命令：
 
 ```
->vagrant ssh
-Last login: Thu Apr 18 18:00:34 2019 from 10.0.2.2
-[vagrant@localhost ~]$
+D:\vmhost>vagrant ssh
+Last login: Sat Aug 14 02:14:02 2021 from 10.0.2.2
+[vagrant@10 ~]$
 
-[vagrant@localhost ~]$ su root
+[vagrant@10 ~]$ su root
 Password:
 vagrant
 
-[root@localhost vagrant]#
+[vagrant@10 vagrant]#
 ```
 命令提示符说明：
   * ">vagrant ssh"中的 “>” 是dos(win10终端)的命令提示符，
   * “$” 是Unix/类Unix(Linux)中普通用户命令提示符
   * “#" 是Unix/类Unix(Linux)中系统管理用户命令提示符
 
-### 1.4、使用宝塔Linux面板代替命令行：
-#### 1.4.1、安装宝塔Linux面板
- - 1、在Linux的终端执行如下命令：
+#### 1.3.1、共享目录配置1：
+ - 创建/www/web/works 备用
 ```
-# yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
+[root@10 vagrant]# cd /
+[root@10 /]# mkdir www
+[root@10 /]# cd www/
+[root@10 www]# mkdir web
+[root@10 www]# cd web
+[root@10 web]# mkdir works
+[root@10 web]# cd works
+[root@10 works]# pwd
+/www/web/works  
+```
+
+
+#### 1.3.2、从Linux虚拟退出到vagrant的步骤如下：
+```
+[vagrant@10 vagrant]# halt     $关闭linux
+
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+
+D:\vmhost>vagrant halt
+==> default: Attempting graceful shutdown of VM...
+    default: Guest communication could not be established! This is usually because
+    default: SSH is not running, the authentication information was changed,
+    default: or some other networking issue. Vagrant will force halt, if
+    default: capable.
+==> default: Forcing shutdown of VM...
+```
+#### 1.3.3、共享目录配置2，网络配置：
+ - 在D盘根目录下创建一个目录：vagrant_work
+ - 用文本编辑器打开D:\vmhost\Vagrantfile,在文件中添加下列一行：
+ 
+ ```
+  config.vm.synced_folder "../vagrant_work","/www/web/works"
+
+  config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "private_network", ip: "192.168.33.10"
+ ```
+ 上方相当与windows下的D:\>vagrant_work文件夹对应linux下的/www/web/works文件夹
+
+### 1.4、使用宝塔Linux面板代替命令行：
+
+#### 1.4.1、安装宝塔Linux面板
+
+ - 1、在Linux的终端执行如下命令：
+
+```
+ #yum install -y wget && wget -O install.sh http://download.bt.cn/install/install_6.0.sh && sh install.sh
+
 ```
  - 2、宝塔Linux面板登录信息显示（本地vagrant）
 
 ```
 上述安装程序执行完成后，
 显示如下信息：（具体内容因人而异）
-Bt-Panel: http://192.168.33.10:8888/e937db4e
-username: fihq9pmi
-password: cf99d8a1
-Warning:
-If you cannot access the panel, 
-release the following port (8888|888|80|443|20|21) in the security group
+==================================================================
+Congratulations! Installed successfully!
+==================================================================
+外网面板地址: http://117.175.187.168:8888/cd658603
+内网面板地址: http://192.168.33.10:8888/cd658603
+username: gm5yvygj
+password: 6decd8c7
+If you cannot access the panel,
+release the following panel port [8888] in the security group
+若无法访问面板，请检查防火墙/安全组是否有放行面板[8888]端口
+==================================================================
 
 ```
 如果上述信息没复制下来，在终端输入命令也能找回同样信息
