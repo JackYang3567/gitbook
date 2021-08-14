@@ -8,9 +8,9 @@
     * [Linux常用操作](Linux应用/Linux常用操作/Linux常用操作.md)
     * Linux开发环境搭建
       - [Nginx安装](Linux应用/Linux开发环境搭建/Nginx安装.md)
-      - [centos7用yum安装java8](Linux应用/Linux开发环境搭建/centos7用yum安装java8.md)
-      - [Centos7上安装docker](Linux应用/Linux开发环境搭建/Centos7上安装docker.md)
-      - [centos7安装jenkins](Linux应用/Linux开发环境搭建/centos7安装jenkins.md)
+      - [1、centos7用yum安装java8](Linux应用/Linux开发环境搭建/1、centos7用yum安装java8.md)
+      - [2、Centos7上安装docker](Linux应用/Linux开发环境搭建/2、Centos7上安装docker.md)
+      - [3、centos7安装jenkins](Linux应用/Linux开发环境搭建/3、centos7安装jenkins.md)
       - [Go环境安装](Linux应用/Linux开发环境搭建/Go环境安装.md)
       - [Postgresql的安装](Linux应用/Linux开发环境搭建/Postgresql的安装.md)
       - [MySQL的安装](Linux应用/Linux开发环境搭建/MySQL的安装.md)

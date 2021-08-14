@@ -456,7 +456,7 @@ $ yum clean all        #全部清除所有缓存的包和头文件
   ```
   not running
 
-## 14、 Linux如何查看端口
+### 13.1、 Linux如何查看端口
 ```
  # lsof -i:80
  -bash: lsof: command not found 
@@ -468,5 +468,22 @@ $ yum clean all        #全部清除所有缓存的包和头文件
  nginx   1840   root    6u  IPv4  17124      0t0  TCP *:http (LISTEN)
  nginx   1841 nobody    6u  IPv4  17124      0t0  TCP *:http (LISTEN)
 ```
+### 13.2、查看已开放的端口
+```
+# firewall-cmd --list-ports
+```
 
+### 13.3、查看端口是否打开
+```
+# firewall-cmd  --query-port=80/tcp
+```
 
+### 13.4、开放端口（开放后需要要重启防火墙才生效）
+```
+# firewall-cmd --zone=public --add-port=9090/tcp --permanent
+```
+### 13.5、重启防火墙
+```
+# firewall-cmd --reload
+# firewall-cmd  --query-port=9090/tcp
+```
