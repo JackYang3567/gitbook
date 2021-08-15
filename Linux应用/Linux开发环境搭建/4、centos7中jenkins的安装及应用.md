@@ -1,6 +1,7 @@
 
 # Linux开发环境搭建
-## 3、centos7安装jenkins
+## 4、centos7中jenkins的安装及应用
+### 4.1、centos7中jenkins的安装
 
  - 1、确认已安装JDK
  - 2、安装jenkins
@@ -40,3 +41,6 @@
  ```
 选择“Install suggested plugins”安装默认的插件，下面Jenkins就会自己去下载相关的插件进行安装。 
 
+### 4.2、centos7中jenkins的应用
+#### 4.2.1、基于vue的前端项目、GitHub的代码仓库用 jenkins 实现自动部署
+本文基于 vue 的前端项目、 GitHub 的代码仓库，简述在 CentOS7 上利用 jenkins 实现自动部署。

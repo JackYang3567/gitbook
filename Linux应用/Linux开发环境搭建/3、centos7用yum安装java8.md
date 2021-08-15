@@ -1,6 +1,6 @@
 
 # Linux开发环境搭建
-## 1、centos7用yum安装java8
+## 3、centos7用yum安装java8
  - 1.查看yum源中是否有相关套件yum -y list java*
  ![java-jdk-1.png](java-jdk-1.png)
  - 2.执行下列命令

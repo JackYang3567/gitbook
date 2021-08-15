@@ -1,7 +1,78 @@
 # Linux开发环境搭建
 ## 1、MySQL的安装
 
-### 1.1、开机启动设置
+### 1.1、查看是否有安装过mysql
+```
+ # rpm -qa | grep mysql
+```
+### 1.2、配置Mysql 8.0安装源
+```
+# rpm -Uvh https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+```
+### 1.3、安装Mysql 8.0
+```
+# yum --enablerepo=mysql80-community install mysql-community-server
+```
+### 1.4、启动mysql服务
+```
+# service mysqld start
+Redirecting to /bin/systemctl start  mysqld.service
+```
+### 1.5、查看mysql服务运行状态
+```
+# service mysqld status
+```
+### 1.6、查看root临时密码
+ - 安装完mysql之后，会生成一个临时的密码让root用户登录
+```
+grep "A temporary password" /var/log/mysqld.log
+il9fyqsDie/Z
+```
+ 
+### 1.7、更改临时密码
+ 
+```
+ # mysql -uroot -p
+ Enter password: 输入临时密码
+
+ mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
+ ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+
+  mysql> SHOW VARIABLES LIKE 'validate_password.%';
+  ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+
+
+  mysql> select user();
+ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+mysql> ALTER USER USER() IDENTIFIED BY '123456';
+SET PASSWORD=PASSWORD('123456');
+ERROR 1819 (HY000): Your password does not satisfy the current policy requirements
+mysql>set global validate_password_policy=0;
+Query OK, 0 rows affected (0.00 sec)
+mysql> set global validate_password_mixed_case_count=2;
+Query OK, 0 rows affected (0.02 sec)
+```
+### 1.8、添加参数
+```
+#添加密码验证插件
+plugin-load-add=validate_password.so
+
+#服务器在启动时加载插件，并防止在服务器运行时删除插件
+validate-password=FORCE_PLUS_PERMANENT
+
+```
+### 1.9、重启mysql
+```
+# systemctl restart mysqld
+
+ mysql>set global validate_password_policy=0;
+ Query OK, 0 rows affected (0.03 sec)
+ mysql>set global validate_password_length=1;
+ Query OK, 0 rows affected (0.03 sec)
+SHOW VARIABLES LIKE 'validate_password%';
+ mysql>alter user 'root'@'localhost' identified by '123456';
+```
+### 1.2、开机启动设置
 ```
 #systemctl enable mysqld
 #systemctl daemon-reload
