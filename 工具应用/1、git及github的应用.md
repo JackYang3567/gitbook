@@ -389,3 +389,23 @@ git reflog
 ```
 git reset --hard HEAD@{n}
 ```
+
+### 4、git常见错误解决方案
+#### 4.1、errno 10054
+
+当使用git push可git clone命令时报如下错误：
+Cloning into 'vue-demo-pro'...
+fatal: unable to access 'https://github.com/XXXXXXX/vue-demo-pro.git/': OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054
+
+ - 解决方法
+ 输入命令
+```
+  $ git config http.sslVerify "false"
+  fatal: not in a git directory
+```
+还是会报上面错：fatal: not in a git directory
+
+再次输入命令：
+```
+ $ git config --global http.sslVerify "false"
+```

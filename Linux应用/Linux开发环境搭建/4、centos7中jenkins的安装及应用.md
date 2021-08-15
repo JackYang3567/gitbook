@@ -43,4 +43,18 @@
 
 ### 4.2、centos7中jenkins的应用
 #### 4.2.1、基于vue的前端项目、GitHub的代码仓库用 jenkins 实现自动部署
+https://www.jb51.net/article/159497.htm
 本文基于 vue 的前端项目、 GitHub 的代码仓库，简述在 CentOS7 上利用 jenkins 实现自动部署。
+ - 一、安装插件 NodeJS
+ Dashboard->系统管理-> 插件管理 
+ 可选插件-> 搜索中输入 NodeJS，勾选 NodeJS，点击 Install without restart 安装
+ - 二、配置 NodeJS 插件
+ Dashboard->系统管理-> 全局工具配置
+ NodeJS 节点下，点击 NodeJS installations
+ 填写 Name，勾选 Install automatically，选择 Version，最后点击 Save
+ - 三、发布配置
+Jenkins -> New Item
+填写 job name，选择 Freestyle project，点击 OK
+点击 Configure 配置 job 构建参数
+General 配置，填写 Project name，Description
+Source Code Management，选择 Git，填写 Repository URL，如果是私有仓库，还需要填写 Credentials( 点击 Add 添加)
