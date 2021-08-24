@@ -16,10 +16,8 @@ Vagrant是简便虚拟机操作的一个软件
 ### 1.2、安装Vagrant虚拟的步骤如下：
  - 1、下载virtualBox，地址点这里，安装
  - 2、下载vagrant，地址点这里，安装
- - 3、下载镜像，有几个地方可以下载：
-   > http://www.vagrantbox.es,
-   https://atlas.hashicorp.com/boxes/search都可以，
-   这里我随便找了个centos65-x86_64-20140116
+ - 3、下载镜像http://cloud.centos.org/centos/8/vagrant/x86_64/images/CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vagrant-virtualbox.box，
+   
  - 4、将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,再在本地加载,，打开cmd，输入以下命令：
  
  ```
@@ -27,6 +25,12 @@ Vagrant是简便虚拟机操作的一个软件
  vagrant init {title}
  vagrant up
 
+ ```
+ - 5、上面命令的实例
+ ```
+ vagrant box add {title} {url}
+ vagrant init {title}
+ vagrant up
  ```
 
 ### 1.3、进入Vagrant Linux虚拟的步骤如下：

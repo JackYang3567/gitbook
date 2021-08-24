@@ -58,3 +58,7 @@ Jenkins -> New Item
 点击 Configure 配置 job 构建参数
 General 配置，填写 Project name，Description
 Source Code Management，选择 Git，填写 Repository URL，如果是私有仓库，还需要填写 Credentials( 点击 Add 添加)
+Build Environment，勾选Add timestamps to the Console Output, Provide Node & npm bin/ folder to PATH
+Build，点击 Add build step 下拉，选择 Execute shell
+ - 四、测试构建
+Jenkins -> All -> node_vue -> Build Now

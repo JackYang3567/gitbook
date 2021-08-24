@@ -18,10 +18,7 @@ Vagrant是简便虚拟机操作的一个软件
 ### 1.2、安装Vagrant虚拟的步骤如下：
  - 1、[下载virtualBox](https://www.virtualbox.org/)，安装
  - 2、[下载vagrant](https://www.vagrantup.com/downloads.html)，安装
- - 3、下载镜像，有几个地方可以下载：
-   > [http://www.vagrantbox.es](http://www.vagrantbox.es/),
-   [https://atlas.hashicorp.com/boxes/search](https://atlas.hashicorp.com/boxes/search)都可以，
-   这里我随便找了个centos65-x86_64-20140116
+ - 3、下载镜像，http://cloud.centos.org/centos/8/vagrant/x86_64/images/CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vagrant-virtualbox.box，
  - 4、将下载的镜像加载，顺便说下，第3步可以不用，vagrant支持在线安装镜像，但由于长城的原因，所以最好通过其它方法将镜像下载下来,
  这里用的是磁盘扩展到100G的容量的BOX。再在本地加载,打开cmd，输入以下命令：
  
@@ -34,10 +31,36 @@ Vagrant是简便虚拟机操作的一个软件
  D:\vmhost>vagrant up
 
  ```
+  - 5、上面命令的实例
+
+```
+ C:\Users\86138>d:
+ D:\>mkdir vmhost
+ D:\>cd vmhost
+ D:\vmhost>mkdir centos8.4
+ D:\vmhost>cd centos8.4
+ D:\vmhost\centos8.4>vagrant box add centos8-4 D:\vswork\Tools\vmbox\CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vagrant-virtualbox.box
+ ==> box: Box file was not detected as metadata. Adding it directly...
+==> box: Adding box 'centos8-4' (v0) for provider:
+    box: Unpacking necessary files from: file:///D:/vswork/Tools/vmbox/CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vagrant-virtualbox.box
+    box:
+==> box: Successfully added box 'centos8-4' (v0) for 'virtualbox'!
+
+ D:\vmhost\centos8.4>vagrant init centos8-4 
+ A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+ 
+ D:\vmhost\centos8.4>vagrant up
+```
  正常启动会出现下列信息
+
  ```
  Bringing machine 'default' up with 'virtualbox' provider...
-==> default: Clearing any previously set forwarded ports...
+==> default: Importing base box 'centos8-4'...
+==> default: Matching MAC address for NAT networking...
+==> default: Setting the name of the VM: centos84_default_1629013655391_64525
 ==> default: Clearing any previously set network interfaces...
 ==> default: Preparing network interfaces based on configuration...
     default: Adapter 1: nat
@@ -48,23 +71,23 @@ Vagrant是简便虚拟机操作的一个软件
     default: SSH address: 127.0.0.1:2222
     default: SSH username: vagrant
     default: SSH auth method: private key
-    default: Warning: Connection aborted. Retrying...
-    default: Warning: Connection reset. Retrying...
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
 ==> default: Machine booted and ready!
 ==> default: Checking for guest additions in VM...
-    default: The guest additions on this VM do not match the installed version of
-    default: VirtualBox! In most cases this is fine, but in rare cases it can
-    default: prevent things such as shared folders from working properly. If you see
-    default: shared folder errors, please make sure the guest additions within the
-    default: virtual machine match the version of VirtualBox you have installed on
-    default: your host and reload your VM.
+    default: No guest additions were detected on the base box for this VM! Guest
+    default: additions are required for forwarded ports, shared folders, host only
+    default: networking, and more. If SSH fails on this machine, please install
+    default: the guest additions and repackage the box to continue.
     default:
-    default: Guest Additions Version: 4.3.30
-    default: VirtualBox Version: 6.1
-==> default: Mounting shared folders...
-    default: /vagrant => D:/vmhost
-==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
-==> default: flag to force provisioning. Provisioners marked to run always will still run.
+    default: This is not an error message; everything may continue to work properly,
+    default: in which case you may ignore this message.
+==> default: Rsyncing folder: /cygdrive/d/vmhost/centos8.4/ => /vagrant
  ```
 
 ### 1.3、进入Vagrant Linux虚拟的步骤如下：
@@ -72,7 +95,6 @@ Vagrant是简便虚拟机操作的一个软件
 
 ```
 D:\vmhost>vagrant ssh
-Last login: Sat Aug 14 02:14:02 2021 from 10.0.2.2
 [vagrant@10 ~]$
 
 [vagrant@10 ~]$ su root
@@ -118,16 +140,114 @@ D:\vmhost>vagrant halt
 ```
 #### 1.3.3、共享目录配置2，网络配置：
  - 在D盘根目录下创建一个目录：vagrant_work
- - 用文本编辑器打开D:\vmhost\Vagrantfile,在文件中添加下列一行：
+ - 用文本编辑器打开D:\vmhost\centos8.4\Vagrantfile,在文件中添加下列一行：
  
  ```
-  config.vm.synced_folder "../vagrant_work","/www/web/works"
+  // ../../vagrant_work  ../../是相对于D:\vmhost\centos8.4\Vagrantfile
+  config.vm.synced_folder "../../vagrant_work","/www/web/works" 
 
   config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "private_network", ip: "192.168.33.10"
  ```
  上方相当与windows下的D:\>vagrant_work文件夹对应linux下的/www/web/works文件夹
+####  1.3.4、启动中出现‘vboxsf’
+当在启动中报mount: /www/web/works: unknown filesystem type 'vboxsf'.错误，虽然能正常启动，
+但：
+```
+[root@10 works]# ls
+是不能显示D:\>vagrant_work\中的内容的。
+```
+ - 解决方案
+ 
+ ```
+ D:\vmhost\centos8.4>vagrant plugin install vagrant-vbguest
+ D:\vmhost\centos8.4>vagrant reload
+ D:\vmhost\centos8.4>vagrant ssh
+ [vagrant@10 ~]$ su root
+Password:
+[root@10 vagrant]# cd /
+[root@10 /]# cd www/web/works/
+[root@10 works]# ls
+javapro  nodepro
+ ```
+####  1.3.5、虚拟机扩展磁盘、根目录
+#####  1.3.5.1、先检查当前容量
+```
+[root@10 works]# df -hl
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        216M     0  216M   0% /dev
+tmpfs           233M     0  233M   0% /dev/shm
+tmpfs           233M  3.4M  230M   2% /run
+tmpfs           233M     0  233M   0% /sys/fs/cgroup
+/dev/sda1        10G  3.9G  6.2G  39% /
+www_web_works   932G   88G  845G  10% /www/web/works
+tmpfs            47M     0   47M   0% /run/user/1000
+```
+#####  1.3.5.2、停止虚拟机
+```
+D:\vmhost\centos8.4>vagrant halt default
+==> default: Attempting graceful shutdown of VM...
+    default: Guest communication could not be established! This is usually because
+    default: SSH is not running, the authentication information was changed,
+    default: or some other networking issue. Vagrant will force halt, if
+    default: capable.
+==> default: Forcing shutdown of VM...
+```
+#####  1.3.5.3、转换镜像
+```
+D:\vmhost\centos8.4>c:
+C:\Users\86138>cd C:\Users\86138\VirtualBox VMs\centos84_default_1629013655391_64525
+C:\Users\86138\VirtualBox VMs\centos84_default_1629013655391_64525>VBoxManage clonehd "CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vmdk" "CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vdi" --format vdi
+```
+#####  1.3.5.4、扩展镜像，此处以扩展到500G为例
+```
+C:\Users\86138\VirtualBox VMs\centos84_default_1629013655391_64525>VBoxManage modifyhd "CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vdi" --resize 512000 
+```
+#####  1.3.5.5、重新挂载磁盘到虚拟机，并启动虚拟机
+```
+C:\Users\86138\VirtualBox VMs\centos84_default_1629013655391_64525>VBoxManage storageattach CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64 --storagectl "SATA Controller" --port 0 --device 0 --type hdd --medium CentOS-8-Vagrant-8.4.2105-20210603.0.x86_64.vdi
 
+C:\Users\86138\VirtualBox VMs\centos84_default_1629013655391_64525>d:
+D:\>cd vmhost
+D:\vmhost>cd centos8.4
+D:\vmhost\centos8.4>vagrant up
+D:\vmhost\centos8.4>vagrant ssh
+
+[vagrant@10 ~]$ su root
+Password:
+[root@10 vagrant]# fdisk -l
+Disk /dev/sda: 10 GiB, 10737418240 bytes, 20971520 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x99540636
+
+Device     Boot Start      End  Sectors Size Id Type
+/dev/sda1  *     2048 20971519 20969472  10G 83 Linux
+
+[root@10 vagrant]# fdisk /dev/sda  
+a. 按p显示分区表，默认是 sda1 和 sda2。
+  b. 按n新建主分区。
+  c. 按p设置为主分区。
+  d. 输入3设置为第三分区。
+  e. 输入两次回车设置默认磁盘起始位置。
+  f. 输入t改变分区格式
+  g. 输入3选择第三分区
+  h. 输入8e格式成LVM格式
+  i. 输入w执行
+
+[root@10 vagrant]# reboot
+D:\vmhost\centos8.4>vagrant ssh
+// 创建物理卷
+```
+
+
+####  1.3.6、删除虚机
+最后，执行下面的命令可以彻底删除虚机，包括整个虚机文件：
+```
+vagrant destroy
+```
 ### 1.4、使用宝塔Linux面板代替命令行：
 
 #### 1.4.1、安装宝塔Linux面板
@@ -369,5 +489,9 @@ location / {
         }
 ```
 
+### 1.6、centos7下卸载宝塔面板软件
+```
+# service bt stop && chkconfig –del bt && rm -f /etc/init.d/bt && rm -rf /www/server/panel
+```
 ---
 <a name="1">第一段</a>

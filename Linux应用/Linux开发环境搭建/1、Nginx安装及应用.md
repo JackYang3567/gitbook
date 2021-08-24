@@ -47,16 +47,16 @@ yum install -y openssl openssl-devel
 
   - 2、使用wget命令下载（推荐）。
 ```
-wget -c https://nginx.org/download/nginx-1.17.0.tar.gz
+wget -c https://nginx.org/download/nginx-1.18.0.tar.gz
 ```
   - 3、解压
 依然是直接命令：
 ```
-tar -zxvf nginx-1.17.0.tar.gz
-cd nginx-1.17.0
+tar -zxvf nginx-1.18.0.tar.gz
+cd nginx-1.18.0
 ```
 * 配置
-其实在 nginx-1.17.0 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。
+其实在 nginx-1.18.0 版本中你就不需要去配置相关东西，默认就可以了。当然，如果你要自己配置目录也是可以的。
   - 1、使用默认配置
 ```
 ./configure
@@ -98,7 +98,8 @@ vi /etc/rc.local
 增加一行 /usr/local/nginx/sbin/nginx
 设置执行权限：
 ```
-chmod 755 rc.local
+# cd /etc
+[root@10 etc]# chmod 755 rc.local
 ```
 nginx重启
 ```
@@ -112,14 +113,13 @@ cd /usr/local/nginx/sbin
 - 查看一下端口进程
 ```
 # netstat -ntpl
-```
-```
+``` 
 关闭
 
 　　查询nginx主进程号
-
+```
 　　ps -ef | grep nginx
-
+```
 　　从容停止   kill -QUIT 主进程号
 
 　　快速停止   kill -TERM 主进程号
@@ -129,7 +129,7 @@ cd /usr/local/nginx/sbin
 　　若nginx.conf配置了pid文件路径，如果没有，则在logs目录下
 
 　　kill -信号类型 '/usr/local/nginx/logs/nginx.pid'
-```
+ 
 ### 1.3、 启动nginx时就报错！
  启动nginx
  ```
