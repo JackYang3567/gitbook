@@ -130,8 +130,7 @@
    * [6、gulp](工具应用/6、gulp.md)
    * [7、webpack](工具应用/7、webpack.md)
    * [8、bower](工具应用/8、Bower.md)
-   * [9、gulp](工具应用/9、gulp.md)
-   * [10、webpack](工具应用/10、webpack.md)
+  
 
 * 数据描述语言
    * [1、protobuf](数据描述语言/1、protobuf.md)
@@ -141,7 +140,7 @@
 * Vagrant环境搭建
    * [1、安装步骤](Vagrant环境搭建/1、安装步骤.md)
    * [2、vagrant常用命令](Vagrant环境搭建/2、vagrant常用命令.md)
-   * [3、vagrant管理虚拟机之虚拟机扩展磁盘、根目录](Vagrant环境搭建/3、vagrant管理虚拟机之虚拟机扩展磁盘、根目录.md)
+   * [3、vagrant管理虚拟机之虚拟机扩展磁盘及根目录](Vagrant环境搭建/3、vagrant管理虚拟机之虚拟机扩展磁盘及根目录.md)
    * [4、删除虚机](Vagrant环境搭建/4、删除虚机.md)
 
 * centos8中docker的使用

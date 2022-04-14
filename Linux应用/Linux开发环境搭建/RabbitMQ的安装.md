@@ -70,7 +70,7 @@ rpm -ivh --nodeps rabbitmq-server-3.7.5-1.el7.noarch.rpm
  sudo firewall-cmd --zone=public --add-port=5672/tcp --permanent
  sudo firewall-cmd --reload  
 ```
-##### 3.2.3、测试RabbitMQ经安装是否成功
+##### 3.2.3、测试RabbitMQ安装是否成功
  正常情况下RabbitMQ已经安装完成，最后测试一下：
 
  ``` 

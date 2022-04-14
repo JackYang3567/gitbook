@@ -414,6 +414,15 @@ $ dpkg-query -W -f='${Installed-Size;10}t${Package}n' | sort -k1,1n 以大小为
 ```
 $ yum list
 ```
+#### 12.1.1、在线查看XX的安装包列表
+```
+ yum -y list XX*
+```
+#### 12.1.2、查看新系统是否已经安装XX环境
+```
+$ yum list installed | grep XX
+如果什么都没显示表示没有安装XX
+```
 
 ### 12.2、 yum remove 删除一个rpm包 
 ```
