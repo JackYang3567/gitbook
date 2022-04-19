@@ -465,8 +465,11 @@ git reset --hard HEAD@{n}
 #### 4.0、Please use a personal access token instead.
 
 >remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+
 >1.打开命令行，cd到我们项目根目录下
+
 >2.然后输入 vim .git/config
+
 >3.打开文件后内容大致如下
 
 ```
@@ -486,18 +489,39 @@ git reset --hard HEAD@{n}
 ```
 
 >然后将你项目的token放到url中，替换成如下（按i进行编辑）：
+
 >url=https://你的token@github.com/Seven750/school_iOSAPP.git
+
 >token后面要有个@符号！！！
+
 >完成后就按：，输入wq保存，然后退出。
+
 >重启git Bash
 
 #### 4.1、 The requested URL returned error: 403
+ - 解决方式：
+ - 1）进入github官网，点击头像，弹出下拉列表，点击Settings
+ ![git-token-1.png](git-token-1.png)
+
+ - 2）点击Devloper settings
+![git-token-2.png](git-token-2.png)
+
+ - 3）点击Personal access token
+![git-token-3.png](git-token-3.png)
+
+ - 4)点击Generate new token
+ ![git-token-4.png](git-token-4.png)
+
+ - 5）按下图勾选，最后点击Generate token，生成令牌。
+ ![git-token-5.png](git-token-5.jpg)
 
 #### 4.2、errno 10054
 
-当使用git push可git clone命令时报如下错误：
-Cloning into 'vue-demo-pro'...
-fatal: unable to access 'https://github.com/XXXXXXX/vue-demo-pro.git/': OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054
+>当使用git push可git clone命令时报如下错误：
+
+>Cloning into 'vue-demo-pro'...
+
+>fatal: unable to access 'https://github.com/XXXXXXX/vue-demo-pro.git/': OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054
 
  - 解决方法
  输入命令
