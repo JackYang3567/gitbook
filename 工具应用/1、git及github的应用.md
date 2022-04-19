@@ -462,7 +462,38 @@ git reset --hard HEAD@{n}
 ```
 
 ### 4、git常见错误解决方案
-#### 4.1、errno 10054
+#### 4.0、Please use a personal access token instead.
+
+>remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.
+>1.打开命令行，cd到我们项目根目录下
+>2.然后输入 vim .git/config
+>3.打开文件后内容大致如下
+
+```
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/JackYang3567/gitbook.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+```
+
+>然后将你项目的token放到url中，替换成如下（按i进行编辑）：
+>url=https://你的token@github.com/Seven750/school_iOSAPP.git
+>token后面要有个@符号！！！
+>完成后就按：，输入wq保存，然后退出。
+>重启git Bash
+
+#### 4.1、 The requested URL returned error: 403
+
+#### 4.2、errno 10054
 
 当使用git push可git clone命令时报如下错误：
 Cloning into 'vue-demo-pro'...
@@ -479,4 +510,33 @@ fatal: unable to access 'https://github.com/XXXXXXX/vue-demo-pro.git/': OpenSSL 
 再次输入命令：
 ```
  $ git config --global http.sslVerify "false"
+```
+
+#### 4.3、Authentication failed
+>remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/
+
+```
+配置命令如下：
+
+git config --global user.name  "JackYang3567"  
+git config --global user.email  "13808013567@163.com"
+```
+
+#### 4.4、 github.com port 443: Timed out
+>fatal: unable to access 'https://github.com/JackYang3567/gitbook.git/': Failed to connect to github.com port 443: Timed out
+```
+解决方案：
+
+（1）查看代理
+ git config --global --get http.proxy
+ git config --global --get https.proxy
+
+（2）设置设置代理
+ git config --global http.proxy 127.0.0.1:7890
+ git config --global https.proxy 127.0.0.1:7890
+
+（3）取消代理
+ git config --global --unset http.proxy
+ git config --global --unset https.proxy 
 ```
