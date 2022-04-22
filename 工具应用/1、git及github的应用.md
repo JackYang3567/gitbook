@@ -564,3 +564,8 @@ git config --global user.email  "13808013567@163.com"
  git config --global --unset http.proxy
  git config --global --unset https.proxy 
 ```
+
+#### 4.5 error: failed to push some refs to 'https://github.com/JackYang3567/java-quickly.git'
+```
+git pull --rebase origin master
+```

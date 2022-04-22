@@ -3,101 +3,69 @@
 
 ### 1.1、React 基本概念
 #### 1.1.1、概念 
-Vue (读音 /vjuː/，类似于 view)，是一个构建以数据驱动的 web 界面的渐进式框架， Vue只关注视图层  
+# react-project
 
-#### 1.1.2、特点
-  - 1) 、声明式
-  - 2) 、响应式
-  - 3) 、组件化 
-  - 4) 、单页面应用 (SPA) 
+## 1、了解npx包执行器
 
-### 1.2、安装和设置 
+#### npm v5.2.0引入的一条命令（npx），引入这个命令的目的是为了提升开发者使用包内提供的命令行工具的体验。
 
-#### 1.2.1、命令行工具 (CLI)
-CLI (@vue/cli) 是一个全局安装的 npm 包，提供了终端里的 vue 命令。它可以通过 vue create 快速创建一个新项目的脚手架，或者直接通过 vue serve 构建新想法的原型。
-#### 1.2.2、Vue/CLI 安装
-在终端运行命令行程序：
+#### 举例：使用create-react-app创建一个react项目。
+
+#### 老方法：
 ```
-npm install -g @vue/cli
-# OR
-yarn global add @vue/cli
+npm install -g create-react-app
+create-react-app my-app
 ```
-检查版本是否正确
+#### npx方式：
 ```
-vue --version
+npx create-react-app my-app
 ```
+这条命令会临时安装 create-react-app 包，命令完成后create-react-app 会删掉，不会出现在 global 中。下次再执行，还是会重新临时安装。
 
-### 1.3、创建项目 
-#### 1.3.1、vue create 命令创建一个新项目
+npx 会帮你执行依赖包里的二进制文件。
+
+举例来说，之前我们可能会写这样的命令：
 ```
-vue create hello-world
+npm i -D webpack
+./node_modules/.bin/webpack -v
 ```
+如果你对 bash 比较熟，可能会写成这样：
+```
+npm i -D webpack
+`npm bin`/webpack -v
+```
+有了 npx，你只需要这样：
+```
+npm i -D webpack
+npx webpack -v
+```
+也就是说 npx 会自动查找当前依赖包中的可执行文件，如果找不到，就会去 PATH 里找。如果依然找不到，就会帮你安装！
 
-### 1.4、内置指令
-#### 1.4.1、v-if  
+npx 甚至支持运行远程仓库的可执行文件：
+```
+npx github:piuccio/cowsay hello
+```
+再比如 npx http-server 可以一句话帮你开启一个静态服务器！（第一次运行会稍微慢一些）
+```
+npx http-server
+```
+指定node版本来运行npm scripts：
+```
+npx -p node@8 npm run build
+```
+## 主要特点：
+- 1、临时安装可执行依赖包，不用全局安装，不用担心长期的污染。
+- 2、可以执行依赖包中的命令，安装完成自动运行。
+- 3、自动加载node_modules中依赖包，不用指定$PATH。
+- 4、可以指定node版本、命令的版本，解决了不同项目使用不同版本的命令的问题。
 
-#### 1.4.2、v-show 
 
-#### 1.4.3、v-for
-
-#### 1.4.4、v-model
-
-#### 1.4.5、v-html
-
-#### 1.4.6、v-bind
-
-#### 1.4.7、v-on 
-
-### 1.5、模板（Template）、数据（Data）和指令（Directive） 
-
-
-
-### 模板中的循环 
-
-### 属性绑定 
-
-### 响应式 
-
-### 响应式如何实现 
-
-### 注意事项 
-
-### 双向数据绑定 
-
-### 动态设置 HTML 
-
-### 方法 
-
-### this 
-
-### 计算属性 
-
-### 侦听器 
-
-### 监听data 对象中某个对象的属性 
-
-### 获取旧值 
-
-### 深度监听 
-
-### 过滤器 
-
-### 使用 ref 直接访问元素 
-
-### 输入和事件 
-
-### v-on 简写 
-
-### 事件修饰符 
-
-### 生命周期钩子 
-
-### 自定义指令 
-
-### 钩子函数参数 
-
-### 过渡和动画 
-
-### CSS 过渡 
-
-### JavaScript 动画 
+## 2、 使用create-react-app创建项目
+ 系统具备，Node 的版本 >= 6 ， npm的版本 >= 5.2 
+ 
+ 运行下列代码创建项目
+ ```
+npx create-react-app appProjectName
+cd appProjectName
+npm start
+````
