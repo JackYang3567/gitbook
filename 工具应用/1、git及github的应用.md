@@ -548,7 +548,8 @@ git config --global user.email  "13808013567@163.com"
 ```
 
 #### 4.4、 github.com port 443: Timed out
->fatal: unable to access 'https://github.com/JackYang3567/gitbook.git/': Failed to connect to github.com port 443: Timed out
+> fatal: unable to access 'https://github.com/JackYang3567/gitbook.git/': Failed to connect to github.com port 443: Timed out
+
 ```
 解决方案：
 
