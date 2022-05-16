@@ -256,10 +256,11 @@ git diff master origin/master
 get merge origin/master
 合并远端更新到本地
 ```
-###### 1.3.2.1、分支操作
+###### 1.3.2.1、当前开发分支到master分支的操作
 ```
 1、第一步：
 在当前分支 ：master_yg
+git add .
 git commit -m"commit master_yg"
 
 2、第二步：
@@ -285,23 +286,25 @@ git push
 git checkout -b branchName 
 然后在branchName分支进行开发
 ```
-###### 1.3.2.2、分支master到分支release操作
+###### 1.3.2.2、从分支master到分支release操作
 ```
 一、在项目目录中右击，选择“Git Bash Here”,进入git 命令行。
-1、 git stash save 'lost-found-2021-07-30'
-2、 git checkout release 
-3、 git merge master
+
+1、 git checkout release 
+2、 git add .  
+3、 git commit -m''  
+4、 git merge master  
+5、 git add .  
+6、 git commit -m''  
 二、查看是否有冲突，在项目目录中右击，"TortoiseGit->Resovle..."
-4、 用工具把冲突解决: 右击冲突文件 在弹出菜单中点击 "Edit conflict"
+7、 用工具把冲突解决: 右击冲突文件 在弹出菜单中点击 "Edit conflict"
 三、回到 项目的Visual Studio Code
-5、 前端 build：回到 项目的Visual Studio Code中 在终端命令行，运行 yarn build
+8、 前端 build：回到 项目的Visual Studio Code中 在终端命令行，运行 yarn build
 四、回到Git Bash
-6、 git add .
-7、 git commit -m"XXX"
-8、 git push
-9、 git checkout master
-10、git stash list 
-11、git stash pop
+9、 git add .
+10、git commit -m"XXX"
+11、git push  
+12、git checkout master
 
 ```
 
