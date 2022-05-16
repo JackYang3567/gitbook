@@ -332,7 +332,7 @@ git push origin :v1.0
 git tag -l -n1
 查看所有tag
 ```
-##### 1.3.4、git命令 HEAD
+##### 1.3.4、git命令 HEAD  
 
 ```
 HEAD 指向当前提交点，游标指针  
