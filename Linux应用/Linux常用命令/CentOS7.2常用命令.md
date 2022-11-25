@@ -465,6 +465,11 @@ $ yum clean all        #全部清除所有缓存的包和头文件
   ```
   not running
 
+- 关闭防火墙
+```
+  $ systemctl stop firewalld
+```
+
 ### 13.1、 Linux如何查看端口
 ```
  # lsof -i:80
