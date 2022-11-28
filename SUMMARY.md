@@ -7,7 +7,7 @@
 * Move语言
     * [前言](Move语言/前言.md)
 * Linux应用
-    * [CentOS7.2常用命令](Linux应用/Linux常用命令/CentOS7.2常用命令.md)
+    * [CentOS常用命令](Linux应用/Linux常用命令/CentOS常用命令.md)
     * [Linux常用操作](Linux应用/Linux常用操作/Linux常用操作.md)
     * Linux开发环境搭建
       - [1、Nginx安装及应用](Linux应用/Linux开发环境搭建/1、Nginx安装及应用.md)     

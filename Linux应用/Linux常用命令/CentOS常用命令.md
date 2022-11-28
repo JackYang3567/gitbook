@@ -1,4 +1,4 @@
-#  Linux常用命令
+#  CentOS ( Linux )常用命令
 ——CentOS7.2常用命令   https://www.cnblogs.com/yjd_hycf_space/p/7730690.html
 
 ## 1、系统信息  
